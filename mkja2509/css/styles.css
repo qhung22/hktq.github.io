@@ -1,0 +1,706 @@
+body {
+    margin: 0;
+    /* font-family: 'Montserrat', sans-serif; */
+    font-family: 'Space Grotesk', sans-serif;
+    background-color: #0d1b2a;
+    color: white;
+    min-height: 100vh;
+    /* Đảm bảo footer nằm dưới cùng */
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+}
+
+.nav {
+    display: flex;
+    gap: 20px;
+}
+
+.nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+/* hover effect */
+
+.nav a:hover {
+    color: #54b3d6;
+    /* Màu khi hover */
+    transform: scale(1.2);
+    /* Phóng to chữ 120% */
+}
+
+.nav a {
+    color: white;
+    /* Màu mặc định, giữ nguyên từ mã gốc */
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+    /* Thêm transform vào transition */
+}
+
+.nav a {
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
+}
+
+.nav a::before,
+.nav a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    left: 0;
+}
+
+.nav a::before {
+    background-color: #54b3d6;
+    height: 2px;
+    bottom: 0;
+    transform-origin: 100% 50%;
+    transform: scaleX(0);
+    transition: transform .3s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.nav a::after {
+    content: attr(data-replace);
+    height: 100%;
+    top: 0;
+    transform-origin: 100% 50%;
+    transform: translate3d(200%, 0, 0);
+    transition: transform .3s cubic-bezier(0.76, 0, 0.24, 1);
+    color: #54b3d6;
+}
+
+.nav a:hover::before {
+    transform-origin: 0% 50%;
+    transform: scaleX(1);
+}
+
+.nav a:hover::after {
+    transform: translate3d(0, 0, 0);
+}
+
+.nav a span {
+    display: inline-block;
+    transition: transform .3s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.nav a:hover span {
+    transform: translate3d(-200%, 0, 0);
+}
+
+
+/**/
+
+.sign-in {
+    background: #ec0b0b;
+    padding: 10px 15px;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+}
+
+.hero {
+    position: relative;
+    text-align: left;
+    padding: 100px;
+    background: url("/static/bg2.jpg") no-repeat center/cover;
+}
+
+
+/***/
+
+
+/* Hero Section */
+
+.hero {
+    position: relative;
+    text-align: left;
+    padding: 100px;
+    overflow: hidden;
+    height: 600px;
+    /* Đặt chiều cao cố định để carousel vừa khung */
+}
+
+.hero .carousel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.hero .carousel-item img,
+.hero .carousel-item video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Đảm bảo ảnh/video lấp đầy khung */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+}
+
+.hero h1 {
+    font-size: 48px;
+    color: #ec0b0b;
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+    /* Bóng chữ để nổi trên nền động */
+}
+
+.hero p {
+    max-width: 400px;
+    font-size: 18px;
+    color: white;
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero .btn {
+    background: rgba(236, 11, 11, 0.8);
+    color: white;
+    padding: 15px 25px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 20px;
+    transition: background 0.3s ease;
+}
+
+.hero .btn:hover {
+    background: rgba(236, 11, 11, 1);
+}
+
+.hero .car-image {
+    position: absolute;
+    right: 0;
+    max-width: 700px;
+    margin-top: -10%;
+    width: 50%;
+    height: auto;
+    z-index: 2;
+}
+
+
+/* Carousel Controls */
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5%;
+    background: rgba(0, 0, 0, 0.3);
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    opacity: 1;
+}
+
+
+/* Responsive */
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 50px;
+        height: 500px;
+    }
+    .hero h1 {
+        font-size: 36px;
+    }
+    .hero p {
+        font-size: 16px;
+    }
+    .hero .btn {
+        padding: 12px 20px;
+    }
+    .hero .car-image {
+        position: static;
+        max-width: 100%;
+        margin-top: 20px;
+        width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero {
+        padding: 30px;
+        height: 400px;
+    }
+    .hero h1 {
+        font-size: 28px;
+    }
+}
+
+
+/***/
+
+.hero h1 {
+    font-size: 52px;
+    color: #ec0b0b;
+    font-weight: bold;
+}
+
+.hero p {
+    max-width: 400px;
+    font-size: 20px;
+}
+
+.about-section p {
+    font-size: 20px;
+}
+
+.car-image {
+    position: absolute;
+    right: 0px;
+    max-width: 700px;
+    margin-top: -10%;
+}
+
+.product-section {
+    padding: 50px;
+    text-align: center;
+    flex: 1;
+    /* Đẩy footer xuống dưới */
+}
+
+.product-section h2 {
+    color: #ec0b0b;
+    font-size: 36px;
+    padding-right: 80%;
+}
+
+.product-list {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.product {
+    background: #1b263b;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 300px;
+}
+
+.product img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.hero img {
+    margin-top: -200px;
+}
+
+.product h3 {
+    margin: 10px 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.product p {
+    color: #ccc;
+}
+
+.product .btn {
+    display: block;
+    margin-top: 10px;
+    background: #ec0b0b;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.hero .btn {
+    display: block;
+    margin-top: 10px;
+    background: #35b4b0;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    height: 50px;
+    width: 200px;
+    font-size: 20px;
+}
+
+.hero .btn:hover,
+.product a:hover {
+    /* color: #54b3d6; */
+    /* Màu khi hover */
+    transform: scale(1.2);
+    /* Phóng to chữ 120% */
+}
+
+.hero .btn,
+.product a {
+    color: white;
+    /* Màu mặc định, giữ nguyên từ mã gốc */
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+    /* Thêm transform vào transition */
+}
+
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 18px;
+    width: 100%;
+}
+
+.footer a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+.social-links {
+    margin: 10px 0;
+}
+
+.contact-info {
+    margin: 10px 0;
+}
+
+
+/* === Logo === */
+
+.logo {
+    height: 70px;
+    /* Chiều cao cố định cho logo */
+    width: auto;
+    /* Giữ tỷ lệ ảnh */
+    display: block;
+    /* Đảm bảo ảnh không bị inline spacing */
+}
+
+
+/* Nếu cần căn chỉnh thêm trong header */
+
+
+/* Responsive adjustments */
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        padding: 15px;
+    }
+    .logo {
+        height: 30px;
+        /* Giảm kích thước trên mobile */
+        margin-bottom: 10px;
+        /* Thêm khoảng cách dưới logo */
+    }
+    .nav {
+        gap: 10px;
+        margin: 10px 0;
+    }
+}
+
+
+/* === Modal Styles === */
+
+
+/* === Modal Styles === */
+
+.trigger-container {
+    text-align: center;
+    padding: 50px;
+}
+
+.modal-dialog {
+    max-width: 600px;
+}
+
+.modal-content.card {
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    border: none;
+}
+
+.modal-header.card-header {
+    text-align: center;
+    font-weight: bold;
+    background-color: #ec0b0b;
+    color: white;
+    padding: 15px 20px;
+    border-bottom: none;
+    justify-content: center;
+    position: relative;
+}
+
+.modal-header .btn-close {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    filter: brightness(0) invert(1);
+    opacity: 0.8;
+}
+
+.modal-header .btn-close:hover {
+    opacity: 1;
+}
+
+.modal-header .modal-title {
+    width: 100%;
+    padding-right: 30px;
+}
+
+.modal-body.card-body {
+    padding: 25px 30px;
+    background-color: white;
+}
+
+.nav-tabs {
+    border-bottom: 1px solid #dee2e6;
+    margin-bottom: 25px;
+}
+
+.nav-tabs .nav-link {
+    color: #007bff;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px 20px;
+    border: none;
+    border-bottom: 3px solid transparent;
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.nav-tabs .nav-link:hover {
+    color: #0056b3;
+    border-bottom-color: #ddd;
+}
+
+.nav-tabs .nav-link.active {
+    color: #ec0b0b;
+    background-color: transparent;
+    border-color: transparent;
+    border-bottom: 3px solid #ec0b0b;
+    font-weight: bold;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-control,
+.form-select {
+    border-radius: 10px;
+    border: 1px solid #ced4da;
+    padding: 10px 12px;
+    font-size: 16px;
+    box-shadow: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #e7240a;
+    box-shadow: 0 0 0 0.2rem rgba(236, 11, 11, 0.25);
+}
+
+.form-select {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-position: right 0.75rem center;
+}
+
+.btn-custom {
+    background-color: #007bff;
+    color: white;
+    border-radius: 25px;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-custom:hover {
+    background-color: #0056b3;
+}
+
+.card-footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-top: 1px solid #dee2e6;
+}
+
+.card-footer small {
+    font-size: 0.9em;
+    color: #6c757d;
+}
+
+.card-footer a.link-toggle {
+    color: #e71708;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.card-footer a.link-toggle:hover {
+    text-decoration: underline;
+    color: #bf0d00;
+}
+
+.input-group-text {
+    background-color: #e9ecef;
+    border: 1px solid #ced4da;
+    border-right: none;
+    border-radius: 10px 0 0 10px;
+    color: #495057;
+}
+
+.input-group .form-control {
+    border-radius: 0 10px 10px 0;
+}
+
+.input-group> :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+    margin-left: -1px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.input-group-text .fa-calendar {
+    color: #007bff;
+}
+
+.captcha-code-display {
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-size: 1.1em;
+    color: #dc3545;
+    background-color: #f8f9fa;
+    padding: 10px 15px;
+    border-radius: 10px 0 0 10px;
+    border: 1px solid #ced4da;
+    border-right: none;
+    user-select: none;
+}
+
+.input-group .btn-secondary {
+    border-radius: 0 10px 10px 0 !important;
+    border: 1px solid #ced4da;
+    border-left: none;
+    background-color: #6c757d;
+}
+
+.input-group .btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+.error-message {
+    color: #dc3545;
+    font-size: 0.875em;
+    margin-top: 0.25rem;
+    display: block;
+}
+
+.register-form .row>* {
+    padding-right: calc(var(--bs-gutter-x) * .5);
+    padding-left: calc(var(--bs-gutter-x) * .5);
+}
+
+.register-form .row .form-group {
+    margin-bottom: 0;
+}
+
+.register-form .row {
+    margin-bottom: 1rem;
+}
+
+
+/* === Responsive Adjustments === */
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        padding: 20px;
+    }
+    .nav {
+        margin: 15px 0;
+    }
+    .nav a {
+        margin: 0 10px;
+    }
+    .sign-in {
+        margin-top: 10px;
+    }
+    .blog-container {
+        margin: 80px 15px 30px;
+    }
+    .blog-container h1 {
+        font-size: 24px;
+    }
+    .blog-container h2 {
+        font-size: 20px;
+    }
+    .blog-image {
+        max-width: 100%;
+    }
+    .footer {
+        padding: 20px;
+    }
+    .map-iframe {
+        height: 200px;
+    }
+    .modal-dialog {
+        max-width: 95%;
+        margin: 1.75rem auto;
+    }
+    .modal-body.card-body {
+        padding: 20px;
+    }
+    .nav-tabs .nav-link {
+        font-size: 16px;
+        padding: 10px 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .modal-header.card-header {
+        padding: 12px 15px;
+    }
+    .modal-header .btn-close {
+        right: 15px;
+    }
+    .modal-header .modal-title {
+        padding-right: 25px;
+    }
+}

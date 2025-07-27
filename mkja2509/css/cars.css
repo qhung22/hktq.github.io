@@ -1,0 +1,99 @@
+/* hero-car Section */
+
+.hero-car {
+    position: relative;
+    text-align: left;
+    padding: 100px;
+    background: url("/static/bg.jpg") no-repeat center/cover;
+}
+
+.hero-car h1 {
+    font-size: 48px;
+    color: #ec0b0b;
+    font-weight: bold;
+}
+
+.hero-car p {
+    max-width: 400px;
+    font-size: 18px;
+    color: #000000;
+    font-weight: bold;
+}
+
+.hero-car .btn {
+    background: #ec0b0b;
+    color: white;
+    padding: 15px 25px;
+    text-decoration: none;
+    font-weight: bold;
+    /* display: inline-block; */
+    margin-top: 20px;
+    /* display: block; */
+}
+
+.hero-car .car-introduction {
+    background: #0f0d0d;
+    color: white;
+    padding: 15px 25px;
+    text-decoration: none;
+    font-weight: bold;
+    /* display: inline-block; */
+    margin-top: 10px;
+    opacity: 0.8;
+    border-radius: 20px;
+}
+
+.hero-car .btn:hover {
+    opacity: 1;
+    /* Trở lại rõ hoàn toàn khi hover */
+}
+
+
+/* Video */
+
+.car-video {
+    position: absolute;
+    right: 0;
+    max-width: 700px;
+    margin-top: -16%;
+    /* margin-left: 20px; */
+    margin-right: 30px;
+    width: 50%;
+    /* Đảm bảo video không quá lớn */
+    height: auto;
+    /* Giữ tỷ lệ video */
+    object-fit: cover;
+    /* Đảm bảo video lấp đầy khu vực */
+    border-radius: 20px;
+}
+
+
+/* Responsive */
+
+@media (max-width: 768px) {
+    .hero-car {
+        padding: 50px;
+    }
+    .hero-car h1 {
+        font-size: 36px;
+    }
+    .hero-car p {
+        font-size: 16px;
+    }
+    .car-video {
+        position: static;
+        /* Video xuống dưới trên mobile */
+        max-width: 100%;
+        margin-top: 20px;
+        width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-car {
+        padding: 30px;
+    }
+    .hero-car h1 {
+        font-size: 28px;
+    }
+}
